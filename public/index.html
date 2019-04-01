@@ -1,0 +1,77 @@
+<!--This product uses the TMDb API but is not endorsed or certified by TMDb.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Colors</title>
+    <meta charset="utf-8"/>
+    <meta keywords="Nathan Dawson">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="app">
+<div style="height:275px"></div>
+<div class="row">
+    <div class="col" id="colorMain"></div>
+</div>
+<br style="height:20px">
+<div class="row justify-content-md-center">
+    <!--div class="col" id="swatchBlock"-->
+        <div v-for="swatch in swatches">
+            <div class="col">
+                <div class="swatchContainer">
+                <div class="swatchBox" v-bind:style="{backgroundColor: swatch.rgbString}"><p>{{swatch.title}}</p></div>
+                <br>
+                <div>
+                <button @click="deleteSwatch(swatch)">Delete</button>
+                
+                <button @click="replaceSwatch(swatch)">Replace</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    <!--/div-->
+</div>
+
+<div id="swatchStyling"></div>
+
+
+<div id="header">
+    <h1>My Personal Color Pallet</h1>
+    <div id="github"><a href="https://github.com/nttgrt/CP3/tree/master">Github Link</a></div>
+
+    <div class="row justify-content-center">
+        <div id="filler"></div>
+        <input v-model="rgb.r" maxlength="3" type="number" id="rInput"></input>
+        <input v-model="rgb.g" maxlength="3" type="number" id="gInput"></input>
+        <input v-model="rgb.b" maxlength="3" type="number" id="bInput"></input>
+        <div id="filler"></div>
+    </div>
+
+    <br style="height: 50px">
+
+    <div class="row justify-content-center">
+            <div id="filler"></div>
+            <input v-model="title" placeholder="Color Title"></input>
+            <button @click="saveSwatch()">Save Color</button>
+            <div id="filler"></div>
+    </div>
+
+    <br style="height: 50px">
+</div>
+</div>
+<!--script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script-->
+<!--script src="https://cdn.jsdelivr.net/npm/vue"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
